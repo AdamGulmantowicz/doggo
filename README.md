@@ -10,14 +10,14 @@ Stylując projekt pamiętaj, aby wszystko tworzyć na podstawie komponentów. Je
 Font możesz pobrać z google fonts.
 
 Tworząc projekt bazuj na dostarczonym designie, zrealizuj komponenty i postaraj się na ich podstawie zbudować cały projekt.
+Pracuj na tym designie(chyba, że masz pomysł na inny):
+https://www.figma.com/community/file/874766871676128442
 
 Pisząc javascript pamiętaj, aby Twój kod był reużywalny, miał wyseparowane fragmenty odpowiadające za poszczególne funkcjonalności.
 
 # Zadania
 
 ## I Wyszukiwanie ras
-
-### Wersja podstawowa
 
 1. Za pomocą Javascriptu zaimportuj zmienną breedsList z pliku data/data.js.
 2. Zmienna przetrzymuje dane w formacie JSON - sparsuj je do javascriptowego obiektu.
@@ -57,10 +57,15 @@ Pisząc javascript pamiętaj, aby Twój kod był reużywalny, miał wyseparowane
 
 ### Wersja rozszerzona
 
-4. Ulubione zdjęcia są zapisane w formacie JSON jako string o localStorage, a przy ponownym odpaleniu aplikacji pobierane i automatycznie renderowane.
+4. Ulubione zdjęcia są zapisane w formacie JSON jako string do localStorage, a przy ponownym odpaleniu aplikacji pobierane i automatycznie renderowane.
 
 ### Wersja rozszerzona 2.0
 
 5. Dodaj przycisk do kasowania wszystkich zdjęć z listy ulubionych
+
+### Wersja rozszerzona 3.0
+
+6. Zdjęcia ulubione nie wyświetlają się w dodatkowej kolumnie, a na oddzielnej podstronie do której można przejść z nawigacji(którą trzeba dodać).
+7. W nawigacji powinna być możliwość wybierania między stroną z aktualną rasą, a stroną z ulubionymi zdjęciami.
 
 # Powodzenia!

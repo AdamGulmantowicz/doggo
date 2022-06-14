@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,28 @@
   <link rel="stylesheet" href="./styles/index.css">
   <title>Doggo - show me your dog!</title>
 </head>
+
 <body>
   <div id="app">
-    <header class="header"></header>
-    <main class="main"></main>
+    <header class="header">
+      <nav id="navigation" class="nav" role="navigation" aria-label="main navigation"></nav>
+      <h1 class="head__heading">The most famous dog's rases
+      </h1>
+    </header>
+    <main class="main">
+      <section class="task__one">
+        <form class="myForm">
+          Select dog's rase:
+          <select id="mySelect">
+            <option class="mySelect__rase"></option>
+          </select>
+        </form>
+      </section>
+    </main>
   </div>
 
   <script type="module" defer src="./js/index.js"></script>
+
 </body>
+
 </html>

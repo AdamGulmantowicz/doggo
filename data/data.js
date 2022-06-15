@@ -31,5 +31,5 @@ const breedImages = `{"pointer":["https://images.dog.ceo/breeds/pointer-german/G
 
 export default {
   breedImages,
-  breedList,
+  breedList
 };

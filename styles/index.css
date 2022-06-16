@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0%;
+}
+
+html {}
+
+img {
+    max-height: 200px;
+    /* max-width: auto; */
+    padding: 10px 0 0 10px ;
+}
+
+.main {
+    display: inline-block;
+}

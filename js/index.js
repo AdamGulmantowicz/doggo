@@ -47,12 +47,12 @@ function selectPhoto() {
         for (const item of set) {
           likeContainer.appendChild(item);
           const buttonDisliked = document.querySelector(".liked");
-
+          console.log(buttonDisliked);
           buttonDisliked.addEventListener("click", function () {
             if (buttonDisliked.textContent.includes(removingText)) {
-              set.remove();
+              set.remove(item);
               element.parentElement.classList.remove("hide");
-
+              element.textContent = initialText;
             } else null
           })
 

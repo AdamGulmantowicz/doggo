@@ -1,0 +1,8 @@
+.image__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hide {
+  display: none;
+}

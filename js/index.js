@@ -4,6 +4,7 @@ const breedList = JSON.parse(data.breedList);
 const breedImages = JSON.parse(data.breedImages);
 const main = document.querySelector('main');
 const header = document.querySelector('header');
+const favourites = document.getElementById('favourites');
 
 
 function renderPage(renderContent) {
@@ -28,19 +29,24 @@ renderPage(renderMain());
 
 const form = document.getElementById('dogForm');
 const gallerySection = document.getElementById('gallery')
-console.log(gallerySection)
 
-const renderImg = function () {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const selectValue = select.options[select.selectedIndex].value;
-        const selectImg = breedImages[selectValue];
-        console.log(selectImg)
-        gallerySection.innerHTML = selectImg.map((path) => /*html*/
-            `<div class="gallery__item">
-                <img class="gallery__img" src="${path}">
-            </div>`
-        ).join('');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const selectValue = select.options[select.selectedIndex].value;
+    const renderImg = breedImages[selectValue];
+    gallerySection.innerHTML = renderImg.map((path) => /*html*/
+        `<div class="gallery__item">
+            <img class="gallery__img" src="${path}">
+            <div class="like"></div>
+        </div>`
+    ).join('');
+    const like = Array.from(document.querySelectorAll('.like'))
+    like.forEach(element => {
+        element.addEventListener('click', function () {
+            element.classList.toggle('like--checked')
+            favourites.innerHTML = element.parentElement.outerHTML
+        })
     })
-}
-renderImg();
+
+})

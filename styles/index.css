@@ -1,7 +1,27 @@
+.main {
+    display: flex;
+}
+
 .gallery__item {
-    max-width: 500px;
+    max-width: 400px;
+    position: relative;
 }
 
 .gallery__img {
     max-width: 400px;
+}
+
+.like {
+    position: absolute;
+    background-color: white;
+    width: 24px;
+    height: 24px;
+    bottom: 20px;
+    left: 20px;
+    clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
+    transform: scale(2);
+}
+
+.like--checked {
+    background-color: red;
 }

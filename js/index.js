@@ -21,21 +21,15 @@ function addingPhoto() {
     const imagesList = dogsImages[selectValue];
     photoList.innerHTML = imagesList.map((img) => /* html */ `<li class = "list__item"><img  class="photo" src="${img}" alt="Dog rase"/><button type="click" class="liked">Like</button></li>`)
       .join(",");
-
     selectPhoto();
-
   });
 }
 addingPhoto()
-
-
-
 
 function selectPhoto() {
   const buttonLiked = Array.from(document.querySelectorAll(".liked"));
   buttonLiked.forEach(element => {
     element.addEventListener("click", function () {
-
       const initialText = "Like";
       const removingText = "Dislike";
       if (element.textContent.includes(initialText)) {
@@ -55,11 +49,8 @@ function selectPhoto() {
               element.textContent = initialText;
             } else null
           })
-
         }
       } else null
-
     })
-
   })
 }

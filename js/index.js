@@ -8,7 +8,7 @@ function renderPage(renderContent) {
     main.innerHTML = renderContent;
 }
 
-const renderForm = function () {
+const renderMain = function () {
 
     return `<form id="dogForm">
             <select name="breed" id="select" form="dogs">
@@ -17,10 +17,13 @@ const renderForm = function () {
             }).join('')}
             </select>
             <input type="submit" value="Submit">
-            </form>`;
+            </form>
+            <section class="gallery">
+            </section>`
+            ;
 }
 
-renderPage(renderForm())
+renderPage(renderMain());
 
 const form = document.getElementById('dogForm');
 
@@ -29,11 +32,11 @@ const renderImg = function () {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const selectValue = select.options[select.selectedIndex].value;
-        main.innerHTML = `<section class="gallery">
-                        ${Object.keys(breedImages.selectValue).map(function (path) {
-                            return `<img src="${path}"></img>`
-                        }).join('')}
-                        </section>`
+        const selectImg =  breedImages[selectValue];
+        const gallerySection = document.querySelector('gallery')
+        selectImg.forEach(path => {
+            gallerySection.innerHTML = `<img src=${path}>`
+        })
     })
 }
 renderImg();

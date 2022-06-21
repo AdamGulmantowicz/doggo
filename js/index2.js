@@ -40,20 +40,17 @@ function selectPhoto() {
         set.add(copiedImg);
         for (const item of set) {
           likeContainer.appendChild(item);
+          const buttonDisliked = document.querySelector(".liked");
+          console.log(buttonDisliked);
+          buttonDisliked.addEventListener("click", function () {
+            if (buttonDisliked.textContent.includes(removingText)) {
+              set.remove(item);
+              element.parentElement.classList.remove("hide");
+              element.textContent = initialText;
+            } else null
+          })
         }
       } else null
-      element.textContent = initialText;
-      element.classList.add("dislike");
-      const buttonDisliked = document.querySelector(".liked");
-      console.log(buttonDisliked);
-      buttonDisliked.addEventListener("click", function () {
-        if (buttonDisliked.textContent.includes(removingText)) {
-          set.remove(item);
-          element.parentElement.classList.remove("hide");
-
-        } else null
-      })
     })
-
   })
 }

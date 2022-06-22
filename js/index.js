@@ -43,13 +43,27 @@ form.addEventListener('submit', (e) => {
     ).join('');
 
     const like = Array.from(document.querySelectorAll('.like'))
-    like.forEach(element => {
+    const addImgSet = function (path) {
+        favouritesSet.add({
+            img: `${path}`
+        })
+        console.log(favouritesSet)
+    }
+    const deleteImgSet = function (path) {
+        favouritesSet.delete({
+            img: `${path}`
+        })
+        console.log(favouritesSet)
+    }
+    like.forEach((element, i) => {
         element.addEventListener('click', function () {
-            element.classList.toggle('like--checked')
             if (!element.classList.contains('like--checked')) {
-                favouritesSet.add(element.parentElement.outerHTML);
+                element.classList.toggle('like--checked')
+                addImgSet(breedImages[selectValue][i])
+            } else {
+                element.classList.toggle('like--checked')
+                deleteImgSet(breedImages[selectValue][i])
             }
         })
     })
-
 })

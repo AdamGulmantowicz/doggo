@@ -13,46 +13,36 @@ ul {
 }
 
 img {
-  width: 30rem;
+  width: 40rem;
+  border-radius: 5px;
+  ;
 }
 
-.head__heading {
-  margin: 0 auto;
+#album {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6rem;
+  margin-left: 2rem;
+
 }
 
-.select__Form {
-  align-items: center;
-}
-
-.image__container {
+.album-item {
+  width: 46rem;
   display: flex;
   justify-content: space-between;
-}
-
-.list__item {
-  width: 40rem;
-  margin-bottom: 2rem;
-  display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  margin-bottom: 6rem;
 }
 
-.hide {
-  display: none;
-}
-
-.viewed__photo {
-  display: flex;
-  justify-content: space-around;
+.picked {
+  width: 25px;
+  height: 25px;
+  border: solid 2px black;
+  border-radius: 15px;
 }
 
 .liked {
-
-  width: 8rem;
-  height: 4rem;
-  border-radius: 5px;
-  font-size: 1.6rem;
-  color: white;
-  background-color: rgb(228, 101, 59);
+  background-color: red;
+  ;
 }

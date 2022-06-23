@@ -47,15 +47,8 @@ form.addEventListener('submit', (e) => {
         favourites.innerHTML = Array.from(favouritesSet).map((path) => /*html*/
             `<div class="gallery__item">
             <img class="gallery__img" src="${path.img}">
-            <div data-img="favourite" class="like like--checked"></div>
         </div>`
         ).join('');
-        const liked = Array.from(document.querySelectorAll('[data-img="favourite"]'))
-        liked.forEach(element => {
-            element.addEventListener('click', function () {
-                element.classList.toggle('like--checked')
-            })
-        })
     }
     like.forEach((element, i) => {
         element.addEventListener('click', function () {
@@ -72,8 +65,6 @@ form.addEventListener('submit', (e) => {
                 renderFavs()
                 console.log(favouritesSet)
             }
-
-
         })
     })
 })

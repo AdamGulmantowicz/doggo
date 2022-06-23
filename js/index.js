@@ -43,27 +43,37 @@ form.addEventListener('submit', (e) => {
     ).join('');
 
     const like = Array.from(document.querySelectorAll('.like'))
-    const addImgSet = function (path) {
-        favouritesSet.add({
-            img: `${path}`
+    const renderFavs = function () {
+        favourites.innerHTML = Array.from(favouritesSet).map((path) => /*html*/
+            `<div class="gallery__item">
+            <img class="gallery__img" src="${path.img}">
+            <div data-img="favourite" class="like like--checked"></div>
+        </div>`
+        ).join('');
+        const liked = Array.from(document.querySelectorAll('[data-img="favourite"]'))
+        liked.forEach(element => {
+            element.addEventListener('click', function () {
+                element.classList.toggle('like--checked')
+            })
         })
-        console.log(favouritesSet)
-    }
-    const deleteImgSet = function (path) {
-        favouritesSet.delete({
-            img: `${path}`
-        })
-        console.log(favouritesSet)
     }
     like.forEach((element, i) => {
         element.addEventListener('click', function () {
             if (!element.classList.contains('like--checked')) {
                 element.classList.toggle('like--checked')
-                addImgSet(breedImages[selectValue][i])
+                favouritesSet.add({
+                    img: `${breedImages[selectValue][i]}`
+                })
+                renderFavs();
+                console.log(favouritesSet)
             } else {
                 element.classList.toggle('like--checked')
-                deleteImgSet(breedImages[selectValue][i])
+                favouritesSet.forEach(path => path.img === `${breedImages[selectValue][i]}` ? favouritesSet.delete(path) : path)
+                renderFavs()
+                console.log(favouritesSet)
             }
+
+
         })
     })
 })

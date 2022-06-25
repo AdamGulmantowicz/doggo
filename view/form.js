@@ -1,15 +1,16 @@
-export default function Form() {
+export default function choiceForm(dogsList) {
 
   return /*html*/ `
   
   <form id="selectForm"> 
-    <input type="text" class="input">
-      <select id="selected" name="choise-dog">
+   
+      <select id="selected" name="choice-dog">
         ${Object.keys(dogsList.message).map(function (el) {
         return /*HTML*/ ` <option value = "${el}" class = "selected__rase"> ${el} </option>` 
       }).join(" ")}
       </select>
-    <button type="submit" class="button">Submit</button>
+      <input type="submit" class="input">
+    
   </form>
 `
 }

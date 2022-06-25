@@ -13,33 +13,92 @@ ul {
 }
 
 img {
-  width: 40rem;
+  width: 50rem;
   border-radius: 5px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.header {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.head__heading {
+  font-size: 24px;
   ;
 }
 
-#album {
+#choice {
+  margin-top: 3rem;
+
+}
+
+#selected,
+.input {
+  max-width: 30rem;
+  padding: 0 3rem;
+  height: 3rem;
+  margin-right: 2rem;
+  font-size: 16px;
+  letter-spacing: 1.2px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 4px;
+}
+
+.input {
+  color: white;
+  font-weight: 600;
+  background-color: orange;
+  border: none;
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  cursor: pointer;
+}
+
+.input:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+#main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#album,
+#album-liked {
   display: flex;
   flex-direction: column;
+  align-content: center;
   margin-top: 6rem;
   margin-left: 2rem;
 
 }
 
 .album-item {
+  position: relative;
   width: 46rem;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
   margin-bottom: 6rem;
+
 }
 
 .picked {
+  position: absolute;
+  z-index: 2;
+  left: 46rem;
+  top: 1rem;
   width: 25px;
   height: 25px;
-  border: solid 2px black;
+  border: solid 1px grey;
+  background-color: white;
   border-radius: 15px;
+  box-shadow: 0 1px 3px rgba(238, 238, 238, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  cursor: pointer;
+}
+
+.picked:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
 }
 
 .liked {

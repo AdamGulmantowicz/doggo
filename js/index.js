@@ -1,5 +1,5 @@
 import data from "../data/data.js";
-// import Form from "../view/form.js";
+import choiceForm from "../view/form.js";
 
 const dogsList = JSON.parse(data.breedList);
 const dogsImages = JSON.parse(data.breedImages);
@@ -8,48 +8,48 @@ const photoList = document.getElementById("album");
 const likedPhoto = document.getElementById("album-liked")
 
 
+choice.innerHTML = choiceForm(dogsList);
 
-function choiceForm() {
-  return /*html*/ `
-  <form id="dogForm"> 
-   <select id="select" name="choice-dog">
-        ${Object.keys(dogsList.message).map(function (el) {
-        return /*HTML*/ ` <option value = "${el}" class = "selected__rase"> ${el} </option>` 
-      }).join(" ")}
-      </select>
-      <input type="submit" class="input" value="Submit">
-
-  </form>`
-}
-
-choice.innerHTML = choiceForm();
-
-
-
-const form = document.getElementById("dogForm");
+const form = document.getElementById("selectForm");
+const select = document.getElementById("selected");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const selectValue = select.options[select.selectedIndex].value;
   const imagesList = dogsImages[selectValue];
+  const likedPhotoSet = new Set();
 
   photoList.innerHTML = imagesList.map((img) => /* html */ `
       <div class = "album-item">
         <img  class="photo" src="${img}" alt="Dog rase"/>
         <div  class="picked"></div>
       </div>`).join('');
-});
 
+  const renderLiked = function () {
+    likedPhoto.innerHTML = [...likedPhotoSet].map((img) => /*html*/
+      `<div class="album-item">
+            <img class="album__img" src="${img}">
+        </div>`
+    ).join('');
+  }
 
-const pickedDogs = Array.from(document.querySelectorAll(".picked"));
-console.log(pickedDogs);
+  renderLiked(imagesList)
 
-pickedDogs.forEach(element => {
-  element.addEventListener("click", function () {
+  const pickedDogs = [...document.querySelectorAll(".picked")];
 
-    element.classList.toggle("liked");
+  pickedDogs.forEach((element, i) => {
+    element.addEventListener("click", function () {
 
-
+      if (!element.classList.contains("liked")) {
+        element.classList.toggle("liked");
+        likedPhotoSet.add(`${dogsImages[selectValue][i]}`)
+        renderLiked()
+      } else {
+        element.classList.toggle("liked");
+        likedPhotoSet.delete(`${dogsImages[selectValue][i]}`)
+        renderLiked()
+      }
+    })
   })
 })

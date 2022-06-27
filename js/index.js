@@ -4,7 +4,7 @@ const breedList = JSON.parse(data.breedList);
 const breedImages = JSON.parse(data.breedImages);
 const main = document.querySelector('main');
 const header = document.querySelector('header');
-const favourites = document.getElementById('favourites');
+const favourites = document.getElementById('galleryFavourites');
 
 
 function renderPage(renderContent) {
@@ -36,8 +36,8 @@ form.addEventListener('submit', (e) => {
     const selectValue = select.options[select.selectedIndex].value;
     const renderImg = breedImages[selectValue];
     gallerySection.innerHTML = renderImg.map((path) => /*html*/
-        `<div class="gallery__item">
-            <img class="gallery__img" src="${path}">
+        `<div class="frame">
+            <img class="frame__img" src="${path}">
             <div class="like ${favouritesSet.has(path) && "like--checked" ? "like--checked": ""}"></div>
         </div>`
     ).join('');
@@ -45,8 +45,8 @@ form.addEventListener('submit', (e) => {
     const like = Array.from(document.querySelectorAll('.like'))
     const renderFavs = function () {
         favourites.innerHTML = Array.from(favouritesSet).map((path) => /*html*/
-            `<div class="gallery__item">
-            <img class="gallery__img" src="${path}">
+            `<div class="frame">
+            <img class="frame__img" src="${path}">
         </div>`
         ).join('');
     }

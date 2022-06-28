@@ -1,20 +1,15 @@
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    padding: 1rem;
-    gap: 1rem;
-    justify-items: center;
-    align-content: flex-start;
-    background-color: #ffb938;
-    border-radius: 15px;
-    margin-right: 1rem;
+.card {
+    padding: 2.8rem;
+    border-radius: 6px;
+    background-color: $col-white;
+    position: relative;
+    max-width: 300px;
 
-    &:last-child {
-        margin-right: 0;
-    }
-
-    &--favourites {
-        max-width: 42rem;
-
+    .like {
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        padding: 1rem;
+        border-radius: 500px;
     }
 }

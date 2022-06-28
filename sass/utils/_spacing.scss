@@ -1,0 +1,23 @@
+.mb-xs:not(:last-child) {
+    margin-bottom: $mb-xs;
+}
+
+.mb-s:not(:last-child) {
+    margin-bottom: $mb-s;
+}
+
+.mb-m:not(:last-child) {
+    margin-bottom: $mb-m;
+}
+
+.mb-l:not(:last-child) {
+    margin-bottom: $mb-l;
+}
+
+.mb-xl:not(:last-child) {
+    margin-bottom: $mb-xl;
+}
+
+.mb-xxl:not(:last-child) {
+    margin-bottom: $mb-xxl;
+}

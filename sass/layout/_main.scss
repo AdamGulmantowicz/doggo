@@ -1,4 +1,4 @@
 .main {
-    padding: 1rem;
-    background-color: #ffd382;
+    @include flex;
+    column-gap: 5rem;
 }

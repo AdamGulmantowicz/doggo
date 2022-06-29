@@ -1,0 +1,35 @@
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    width: 100%;
+    align-content: flex-start;
+
+    &--favourites {
+        max-width: 300px;
+    }
+
+    .card {
+        padding: 2.8rem;
+        border-radius: 6px;
+        background-color: $col-white;
+        position: relative;
+        max-width: 300px;
+        max-height: 300px;
+        @include flex(row, center, center);
+
+        &__img {
+            max-height: 24.4rem;
+            overflow: hidden;
+        }
+
+        .like {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            padding: 1rem;
+            border-radius: 500px;
+        }
+
+
+    }
+}

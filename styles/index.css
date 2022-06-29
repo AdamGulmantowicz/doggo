@@ -99,6 +99,14 @@ a {
   position: relative;
   max-width: 300px;
   max-height: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.gallery .card__img {
+  max-height: 24.4rem;
+  overflow: hidden;
 }
 .gallery .card .like {
   position: absolute;

@@ -41,31 +41,26 @@ form.addEventListener('submit', (e) => {
     const renderImg = breedImages[selectValue];
     gallerySection.innerHTML = renderImg.map((path) => /*html*/
         `<div class="card mb-m">
-            <img class="card__img" src="${path}">
+            <figure class="card__img"><img src="${path}" alt=""></figure>
             <button class="btn like ${localStorage.getItem(`${path}`) ? "": "btn--secondary"}">❤️</butt>
         </div>`
     ).join('');
-    favourites.innerHTML = `<button id="clearBtn" class="btn" type="submit">Clear Favourites</button>` +
+    favourites.innerHTML = `<button id="clearBtn" class="btn mb-l" type="submit">Clear Favourites</button>` +
         Object.keys(localStorage).map((path) => /*html*/
             `<div class="card mb-m">
-            <img class="card__img" src="${path}">
+            <figure class="card__img"><img src="${path}" alt=""></figure>
         </div>`
         ).join('');
     Object.keys(localStorage).forEach(el => {
         favouritesSet.add(el)
     })
 
-
-
-
     const like = Array.from(document.querySelectorAll('.like'))
-
-
     const renderFavs = function () {
-        favourites.innerHTML = `<button id="clearBtn" class="btn" type="submit">Clear Favourites</button>` +
+        favourites.innerHTML = `<button id="clearBtn" class="btn mb-l" type="submit">Clear Favourites</button>` +
             Array.from(favouritesSet).map((path) => /*html*/
                 `<div class="card mb-m">
-            <img class="card__img" src="${path}">
+            <figure class="card__img"><img src="${path}" alt=""></figure>
         </div>`
             ).join('');
 
@@ -83,9 +78,10 @@ form.addEventListener('submit', (e) => {
                     el.classList.toggle('btn--secondary');
                 }
             })
-            favourites.innerHTML = `<button id="clearBtn" class="btn" type="submit">Clear Favourites</button>`
+            favourites.innerHTML = `<button id="clearBtn" class="btn mb-l" type="submit">Clear Favourites</button>`
         })
     }
+
     renderFavs();
     like.forEach((element, i) => {
         element.addEventListener('click', function () {

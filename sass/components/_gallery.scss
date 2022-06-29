@@ -15,6 +15,12 @@
         position: relative;
         max-width: 300px;
         max-height: 300px;
+        @include flex(row, center, center);
+
+        &__img {
+            max-height: 24.4rem;
+            overflow: hidden;
+        }
 
         .like {
             position: absolute;
@@ -23,5 +29,7 @@
             padding: 1rem;
             border-radius: 500px;
         }
+
+
     }
 }

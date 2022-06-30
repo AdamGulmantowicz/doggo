@@ -92,23 +92,20 @@ a {
 .gallery--favourites {
   max-width: 300px;
 }
-.gallery .card {
+
+.card {
   padding: 2.8rem;
   border-radius: 6px;
   background-color: #FFF;
   position: relative;
   max-width: 300px;
   max-height: 300px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
-.gallery .card__img {
+.card__img {
   max-height: 24.4rem;
   overflow: hidden;
 }
-.gallery .card .like {
+.card .like {
   position: absolute;
   left: 20px;
   bottom: 20px;

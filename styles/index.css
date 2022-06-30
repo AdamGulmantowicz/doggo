@@ -30,11 +30,31 @@ img {
 
 #choice {
   margin-top: 3rem;
+}
 
+.range_form {
+  max-width: 36rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2.5rem auto;
+}
+
+.range_label {
+  font-size: 18px;
+  ;
+}
+
+#rangevalue {
+  width: 4rem;
+  text-align: center;
 }
 
 #selected,
-.input {
+.input,
+.search_input,
+.btn_search {
   max-width: 30rem;
   padding: 0 3rem;
   height: 3rem;
@@ -45,7 +65,8 @@ img {
   border-radius: 4px;
 }
 
-.input {
+.input,
+.btn_search {
   color: white;
   font-weight: 600;
   background-color: orange;
@@ -54,7 +75,8 @@ img {
   cursor: pointer;
 }
 
-.input:hover {
+.input:hover,
+.btn_search:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 

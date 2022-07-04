@@ -1,3 +1,8 @@
+// @ts-check
 import App from "./components/App.js";
 
-new App({ root: document.getElementById("app") });
+const divEl = document.getElementById("app");
+
+new App({
+  parent: divEl,
+});

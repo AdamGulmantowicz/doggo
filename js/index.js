@@ -1,4 +1,6 @@
+
 import data from "../data/data.js";
+import imgCard from "./components/card.js";
 
 const breedList = JSON.parse(data.breedList);
 const breedImages = JSON.parse(data.breedImages);
@@ -13,7 +15,7 @@ function renderPage(renderContent) {
 
 const renderMain = function () {
 
-    return /*html*/ `
+    return /* html */ `
     <form class="card mb-l" id="dogForm">
         <h1 class='h3'>Choose breed</h1>
             <div class="field">
@@ -33,46 +35,39 @@ renderPage(renderMain());
 
 const form = document.getElementById('dogForm');
 const gallerySection = document.getElementById('gallery')
-const favouritesSet = new Set();
+export const favouritesSet = new Set();
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const selectValue = select.options[select.selectedIndex].value;
     const renderImg = breedImages[selectValue];
-    gallerySection.innerHTML = renderImg.map((path) => /*html*/
-        `<div class="card mb-m">
-            <figure class="card__img"><img src="${path}" alt=""></figure>
-            <button class="btn like ${localStorage.getItem(`${path}`) ? "": "btn--secondary"}">❤️</butt>
-        </div>`
-    ).join('');
-    favourites.innerHTML = `<button id="clearBtn" class="btn mb-l" type="submit">Clear Favourites</button>` +
-        Object.keys(localStorage).map((path) => /*html*/
-            `<div class="card mb-m">
-            <figure class="card__img"><img src="${path}" alt=""></figure>
-        </div>`
-        ).join('');
-    Object.keys(localStorage).forEach(el => {
+    const storageArr = JSON.parse(localStorage.getItem('favouritesImgs'));
+
+    if(storageArr){
+        storageArr.forEach(el => {
         favouritesSet.add(el)
-    })
+        })
+    }
+
+    gallerySection.innerHTML = renderImg.map((path) =>
+        imgCard(path)
+    ).join('');
+
 
     const like = Array.from(document.querySelectorAll('.like'))
     const renderFavs = function () {
         favourites.innerHTML = `<button id="clearBtn" class="btn mb-l" type="submit">Clear Favourites</button>` +
-            Array.from(favouritesSet).map((path) => /*html*/
-                `<div class="card mb-m">
-            <figure class="card__img"><img src="${path}" alt=""></figure>
-        </div>`
+            Array.from(favouritesSet).map((path) =>
+                imgCard(path, false)
             ).join('');
 
         const clearBtn = document.getElementById('clearBtn');
 
         clearBtn.addEventListener('click', (e) => {
             localStorage.clear();
-            console.log(favouritesSet);
             Array.from(favouritesSet).forEach(el => {
                 favouritesSet.delete(`${el}`)
             })
-            console.log(favouritesSet);
             like.forEach(el => {
                 if (!el.classList.contains('btn--secondary')) {
                     el.classList.toggle('btn--secondary');
@@ -81,21 +76,20 @@ form.addEventListener('submit', (e) => {
             favourites.innerHTML = `<button id="clearBtn" class="btn mb-l" type="submit">Clear Favourites</button>`
         })
     }
-
     renderFavs();
+
     like.forEach((element, i) => {
         element.addEventListener('click', function () {
             const currentImg = breedImages[selectValue][i];
             if (!favouritesSet.has(currentImg)) {
                 element.classList.toggle('btn--secondary')
                 favouritesSet.add(currentImg)
-                localStorage.setItem(`${currentImg}`, `${currentImg}`);
-                console.log(Object.keys(localStorage))
+                localStorage.setItem(`favouritesImgs`, `${JSON.stringify(Array.from(favouritesSet))}`);
                 renderFavs();
             } else {
                 element.classList.toggle('btn--secondary')
                 favouritesSet.delete(currentImg)
-                localStorage.removeItem(`${currentImg}`);
+                localStorage.setItem(`favouritesImgs`, `${JSON.stringify(Array.from(favouritesSet))}`);
                 renderFavs()
             }
         })

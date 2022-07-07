@@ -68,4 +68,21 @@ Pisząc javascript pamiętaj, aby Twój kod był reużywalny, miał wyseparowane
 6. Zdjęcia ulubione nie wyświetlają się w dodatkowej kolumnie, a na oddzielnej podstronie do której można przejść z nawigacji(którą trzeba dodać).
 7. W nawigacji powinna być możliwość wybierania między stroną z aktualną rasą, a stroną z ulubionymi zdjęciami.
 
+## Zadanie IV
+
+1. Na start aplikacji pobierz wszystkie rasy psów z endpointu:
+   https://dog.ceo/api/breeds/list/all
+2. Po pobraniu dodaj wszystkie rasy do selecta.
+3. Po wybraniu rasy w selecie zrób request o wszystkie zdjęcia danej rasy:
+   https://dog.ceo/api/breed/{nazwa-rasy}/images
+4. Po pobraniu wszystkich zdjęć - wyświetl je
+
+### Zadanie rozszerzone
+
+5. Wyświetl loader po wejściu na stronę i ukryj go kiedy załadujesz wszystkie rasy
+
+### Zadanie rozszerzone 2.0
+
+6. Dodaj loader do listy zdjęć danej rasy, który wyświetli się zanim zdjęcia zostaną pobrane.
+
 # Powodzenia!

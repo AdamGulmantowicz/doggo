@@ -150,6 +150,9 @@ a {
 form {
   display: flex;
   flex-direction: column;
+  padding: 2.8rem;
+  border-radius: 6px;
+  background-color: #FFF;
   row-gap: 2rem;
 }
 form .field {

@@ -1,5 +1,8 @@
 form {
     @include flex(column);
+    padding: 2.8rem;
+    border-radius: 6px;
+    background-color: $col-white;
     row-gap: 2rem;
 
     .field {

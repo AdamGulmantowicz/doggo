@@ -1,0 +1,30 @@
+.btn {
+    @include font(14px, 17px, 800, $col-white, $font-primary);
+    padding: 1.2rem 2.5rem;
+    border-radius: 4px;
+    background-color: $col-primary;
+    border: 1px solid transparent;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+        background-color: $col-primary-light;
+    }
+
+    &:disabled {
+        opacity: 0.3;
+        filter: $drop-shadow-10;
+    }
+
+    &--secondary {
+        background-color: $col-white;
+        border: 1px solid $col-grey-500;
+        color: $col-black;
+
+        &:hover {
+            border-color: $col-black;
+            background-color: $col-white;
+        }
+    }
+}

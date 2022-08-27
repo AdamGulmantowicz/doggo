@@ -1,0 +1,35 @@
+form {
+  @include flex(column);
+  row-gap: 2rem;
+
+  .field {
+    @include flex(column);
+    gap: 2rem;
+  }
+}
+
+.label {
+  @include font(14px, 17px, 500, $col-grey-800, $font-primary);
+}
+
+.input,
+.select {
+  background-color: $col-white;
+  border-radius: 2px;
+  border: 1px solid $col-grey-500;
+  padding: 1.2rem;
+  @include font(14px, 17px, 400, $col-black, $font-primary);
+  transition: all 0.3s;
+
+  &::placeholder {
+    @include font(14px, 17px, 400, $col-grey-600, $font-primary);
+  }
+
+  &:focus {
+    border-color: $col-blue-400;
+  }
+
+  &:invalid {
+    border-color: $col-primary;
+  }
+}

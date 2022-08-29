@@ -41,13 +41,6 @@ function Gallery({
   hasBtn = true,
 }) {
   const [renderList, setRenderList] = useState(false);
-  let loadedPhotos = 0;
-
-  useEffect(() => {
-    if (paths.length > 0) {
-      if (loadedPhotos === paths.length) setRenderList(true);
-    }
-  }, [loadedPhotos, paths, paths.length]);
 
   return (
     <React.Fragment>
@@ -64,14 +57,16 @@ function Gallery({
         ) : (
           ""
         )}
-        {paths.map((path) => (
+        {paths.map((path, index) => (
           <ImgCard
             key={path}
             path={path}
             handleClick={handleClick}
             hasBtn={hasBtn}
             isFavourite={favouriteImages.has(path)}
-            onLoad={loadedPhotos++}
+            onLoad={() => {
+              if (index + 1 === paths.length) setRenderList(true);
+            }}
           />
         ))}
       </section>

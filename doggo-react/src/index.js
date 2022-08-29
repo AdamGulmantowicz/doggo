@@ -13,11 +13,11 @@ function Loader() {
   );
 }
 
-function ImgCard({ path, hasBtn = true, handleClick, isFavourite }) {
+function ImgCard({ path, hasBtn = true, handleClick, isFavourite, onLoad }) {
   return (
     <div className="card mb-m">
       <figure className="card__img">
-        <img src={path} alt="" />
+        <img src={path} alt="" onLoad={onLoad} />
         {hasBtn ? (
           <button
             className={isFavourite ? "btn" : "btn btn--secondary"}
@@ -40,29 +40,43 @@ function Gallery({
   clearFavouriteImages,
   hasBtn = true,
 }) {
+  const [renderList, setRenderList] = useState(false);
+  let loadedPhotos = 0;
+
+  useEffect(() => {
+    if (paths.length > 0) {
+      if (loadedPhotos === paths.length) setRenderList(true);
+    }
+  }, [loadedPhotos, paths, paths.length]);
+
   return (
-    <section
-      className={
-        clearFavouriteImages ? "gallery gallery--favourites" : "gallery"
-      }
-    >
-      {clearFavouriteImages ? (
-        <button className="btn mb-1" onClick={clearFavouriteImages}>
-          Clear Favourites
-        </button>
-      ) : (
-        ""
-      )}
-      {paths.map((path) => (
-        <ImgCard
-          key={path}
-          path={path}
-          handleClick={handleClick}
-          hasBtn={hasBtn}
-          isFavourite={favouriteImages.has(path)}
-        />
-      ))}
-    </section>
+    <React.Fragment>
+      <section
+        className={
+          (clearFavouriteImages ? "gallery gallery--favourites" : "gallery") +
+          (renderList ? " visible" : " hidden")
+        }
+      >
+        {clearFavouriteImages ? (
+          <button className="btn mb-1" onClick={clearFavouriteImages}>
+            Clear Favourites
+          </button>
+        ) : (
+          ""
+        )}
+        {paths.map((path) => (
+          <ImgCard
+            key={path}
+            path={path}
+            handleClick={handleClick}
+            hasBtn={hasBtn}
+            isFavourite={favouriteImages.has(path)}
+            onLoad={loadedPhotos++}
+          />
+        ))}
+      </section>
+      {paths.length > 0 ? renderList ? "" : <Loader /> : ""}
+    </React.Fragment>
   );
 }
 

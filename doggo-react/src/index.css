@@ -207,6 +207,10 @@ label {
   column-gap: 1rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .lds-ring {
   display: inline-block;
   position: relative;

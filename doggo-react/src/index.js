@@ -82,6 +82,15 @@ function Gallery({
 function Form({ breeds, handleSubmit }) {
   // const [selectedBreed, setSelectedBreed] = useState(breeds[0]);
   const formRef = useRef();
+  const [inputValue, setInputValue] = useState("");
+
+  const onChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const onSearch = (searchTerm) => {
+    setInputValue(searchTerm);
+  };
   return (
     <form
       ref={formRef}
@@ -108,6 +117,30 @@ function Form({ breeds, handleSubmit }) {
           ))}
         </select>
         <input type="number" min="1" max="5" defaultValue="1" name="limit" />
+        <div className="search__container">
+          <div className="search__inner">
+            <label>search</label>
+            <input type="text" value={inputValue} onChange={onChange} />
+          </div>
+          <ul className="search__list">
+            {inputValue > 2
+              ? breeds
+                  .filter(
+                    (item) => item.startsWith(inputValue) && item !== inputValue
+                  )
+                  .slice(0, 10)
+                  .map((breed) => (
+                    <li
+                      key={breed}
+                      value={breed}
+                      onClick={() => onSearch(breed)}
+                    >
+                      {breed}
+                    </li>
+                  ))
+              : ""}
+          </ul>
+        </div>
       </div>
       <button className="btn" type="submit">
         Submit

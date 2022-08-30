@@ -42,6 +42,10 @@ function Gallery({
 }) {
   const [renderList, setRenderList] = useState(false);
 
+  useEffect(() => {
+    setRenderList(false);
+  }, [paths]);
+
   return (
     <React.Fragment>
       <section

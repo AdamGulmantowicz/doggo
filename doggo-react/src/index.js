@@ -116,6 +116,7 @@ function Form({ breeds, handleSubmit }) {
             </option>
           ))}
         </select>
+        <label>limit pictures displayed</label>
         <input type="number" min="1" max="5" defaultValue="1" name="limit" />
         <div className="search__container">
           <div className="search__inner">

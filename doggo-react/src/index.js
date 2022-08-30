@@ -103,7 +103,7 @@ function Form({ breeds, handleSubmit }) {
             </option>
           ))}
         </select>
-        <input type="number" min="1" max="5" name="limit" />
+        <input type="number" min="1" max="5" defaultValue="1" name="limit" />
       </div>
       <button className="btn" type="submit">
         Submit
@@ -115,6 +115,7 @@ function Form({ breeds, handleSubmit }) {
 function App() {
   const [breedList, setBreedList] = useState(null);
   const [breedImages, setBreedImages] = useState([]);
+  const [currentBreed, setCurrentBreed] = useState(null);
   const [favouriteImages, setFavouriteImages] = useState(
     new Set(
       localStorage.getItem("favouriteImages")
@@ -126,7 +127,7 @@ function App() {
   const handleSubmit = (formData) => {
     const breed = formData.get("breed");
     const limit = formData.get("limit");
-
+    setCurrentBreed(breed);
     fetch(`https://dog.ceo/api/breed/${breed}/images`)
       .then((res) => {
         return res.json();
@@ -171,6 +172,11 @@ function App() {
   return (
     <React.Fragment>
       <header className="header mb-l">
+        {currentBreed ? (
+          <h2 className="card h2">currently selected breed: {currentBreed}</h2>
+        ) : (
+          <h2 className="card h2">Find your favourite dog!</h2>
+        )}
         {breedList ? (
           <Form breeds={breedList} handleSubmit={handleSubmit} />
         ) : (

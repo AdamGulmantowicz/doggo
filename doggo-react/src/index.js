@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
@@ -76,14 +76,16 @@ function Gallery({
 }
 
 function Form({ breeds, handleSubmit }) {
-  const [selectedBreed, setSelectedBreed] = useState(breeds[0]);
-
+  // const [selectedBreed, setSelectedBreed] = useState(breeds[0]);
+  const formRef = useRef();
   return (
     <form
+      ref={formRef}
       className="card mb-l"
       onSubmit={(e) => {
         e.preventDefault();
-        handleSubmit(selectedBreed);
+        const formData = new FormData(formRef.current);
+        handleSubmit(formData);
       }}
     >
       <h1 className="h3">Choose breed</h1>
@@ -91,8 +93,9 @@ function Form({ breeds, handleSubmit }) {
         <label>Breed</label>
         <select
           className="select"
-          onChange={(e) => setSelectedBreed(e.target.value)}
-          value={selectedBreed}
+          name="breed"
+          // onChange={(e) => setSelectedBreed(e.target.value)}
+          // value={selectedBreed}
         >
           {breeds.map((breed) => (
             <option key={breed} value={breed}>
@@ -100,6 +103,7 @@ function Form({ breeds, handleSubmit }) {
             </option>
           ))}
         </select>
+        <input type="number" min="1" max="5" name="limit" />
       </div>
       <button className="btn" type="submit">
         Submit
@@ -119,13 +123,16 @@ function App() {
     )
   );
 
-  const handleSubmit = (breed) => {
+  const handleSubmit = (formData) => {
+    const breed = formData.get("breed");
+    const limit = formData.get("limit");
+
     fetch(`https://dog.ceo/api/breed/${breed}/images`)
       .then((res) => {
         return res.json();
       })
       .then((path) => {
-        setBreedImages(path.message);
+        setBreedImages(path.message.slice(0, limit));
       });
   };
 
